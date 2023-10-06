@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SetLightRot1 : MonoBehaviour
+public class SetLightRot2 : MonoBehaviour
 {
     private GameObject mSpotlight;
     private Slider mSlider;
@@ -12,9 +12,9 @@ public class SetLightRot1 : MonoBehaviour
     void Start()
     {
         mSpotlight = GameObject.Find("BasicDownLight");
-        mSlider = GameObject.Find("Canvas/Rotation1").GetComponent<Slider>();
-        mSlider.value = mSpotlight.transform.eulerAngles.x;
-        mSlider.onValueChanged.AddListener(OnRot1Change);
+        mSlider = GameObject.Find("Canvas/Rotation2").GetComponent<Slider>();
+        mSlider.value = mSpotlight.transform.eulerAngles.y;
+        mSlider.onValueChanged.AddListener(OnRot2Change);
     }
 
     // Update is called once per frame
@@ -23,9 +23,9 @@ public class SetLightRot1 : MonoBehaviour
         
     }
 
-    void OnRot1Change(float value){
-        float y = mSpotlight.transform.eulerAngles.y;
+    void OnRot2Change(float value){
+        float x = mSpotlight.transform.eulerAngles.x;
         float z = mSpotlight.transform.eulerAngles.z;
-        mSpotlight.transform.rotation = Quaternion.Euler(value, y, z);
+        mSpotlight.transform.rotation = Quaternion.Euler(x, value, z);
     }
 }
